@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+        Plazfer
+        QR code App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-item>
+    <ion-input type="text" placeholder="My QR data" [(ngModel)]="qrdata">
+    </ion-input>
+</ion-item>
+<button ion-button full icon-left (click)="createcode()"><ion-icon name="barcode"></ion-icon>CreateCode</button>
+<button ion-button full icon-left (click)="scancode()"><ion-icon name="qr-scanner"></ion-icon>ScannedCode</button>
+
+<ion-card *ngIf="createdcode">
+  <ngx-qrcode [qrc-value]="createdcode"></ngx-qrcode>
+  <ion-card-content>
+    <p>Value: {{ createdcode }}</p>
+    <button ion-button full icon-left (click)="print(createdcode)"><ion-icon name="md-print"></ion-icon>Print</button>
+  </ion-card-content>
+</ion-card>
+<ion-card *ngIf="scannedcode">
+  <ion-card-content>
+    <p>Result from Scan: {{ scannedcode }}</p>
+  </ion-card-content>
+</ion-card>
+</ion-content>
